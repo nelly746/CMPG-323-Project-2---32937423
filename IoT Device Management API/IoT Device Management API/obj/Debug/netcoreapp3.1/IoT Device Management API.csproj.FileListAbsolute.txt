@@ -62,3 +62,8 @@ C:\Users\Ian\source\repos\IoT Device Management API\IoT Device Management API\ob
 C:\Users\Ian\source\repos\IoT Device Management API\IoT Device Management API\obj\Debug\netcoreapp3.1\IoT Device Management API.dll
 C:\Users\Ian\source\repos\IoT Device Management API\IoT Device Management API\obj\Debug\netcoreapp3.1\IoT Device Management API.pdb
 C:\Users\Ian\source\repos\IoT Device Management API\IoT Device Management API\obj\Debug\netcoreapp3.1\IoT Device Management API.genruntimeconfig.cache
+C:\Users\Ian\source\repos\IoT Device Management API\IoT Device Management API\obj\Debug\netcoreapp3.1\IoT Device Management API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Ian\source\repos\IoT Device Management API\IoT Device Management API\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\Ian\source\repos\IoT Device Management API\IoT Device Management API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Ian\source\repos\IoT Device Management API\IoT Device Management API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Ian\source\repos\IoT Device Management API\IoT Device Management API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll

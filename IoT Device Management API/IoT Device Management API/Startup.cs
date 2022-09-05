@@ -1,4 +1,4 @@
-using IoT_Device_Management_API.Database;
+using IoT_Device_Management_API.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,10 +28,10 @@ namespace IoT_Device_Management_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<DatabaseContext>(a => a.UseSqlServer(Configuration.GetConnectionString("IoT_database_connection_string"),
+            services.AddDbContext<IoT_Device_Management_SystemContext>(a => a.UseSqlServer(Configuration.GetConnectionString("IoT_database_connection_string"),
                 b => b.CommandTimeout(100)
             ));
-            //services.AddSwaggerGen();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +41,8 @@ namespace IoT_Device_Management_API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
 
