@@ -8,8 +8,14 @@ namespace IoT_Device_Management_API.Services.Implementations
 {
     public class CategoryService : ICategoryService
     {
+        private IoT_Device_Management_SystemContext dbContext;
+        public CategoryService(IoT_Device_Management_SystemContext a)
+        {
+            dbContext = a;
+        }
         public void addDevice(Category a)
         {
+            dbContext.Categories.Add(a);
             throw new NotImplementedException();
         }
 
@@ -20,16 +26,19 @@ namespace IoT_Device_Management_API.Services.Implementations
 
         public List<Category> GetCategories()
         {
+            return dbContext.Categories.ToList();
             throw new NotImplementedException();
         }
 
         public Category GetCategoryByID(Guid id)
         {
+            return dbContext.Categories.Where(a => a.CategoryId == id).First();
             throw new NotImplementedException();
         }
 
         public List<Device> getDevices(Guid category_id)
         {
+            //return dbContext.Categories.ToList();
             throw new NotImplementedException();
         }
 

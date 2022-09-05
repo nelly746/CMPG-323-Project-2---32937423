@@ -8,7 +8,7 @@ namespace IoT_Device_Management_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DeviceController : Controller
+    public class CategoriesController : Controller
     {
         public IActionResult Index()
         {

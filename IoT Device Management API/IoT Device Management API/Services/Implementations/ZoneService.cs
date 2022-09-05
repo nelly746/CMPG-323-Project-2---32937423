@@ -1,4 +1,5 @@
 ﻿using IoT_Device_Management_API.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +30,9 @@ namespace IoT_Device_Management_API.Services.Implementations
 
         public List<Device> getDevices(Guid zone_id)
         {
-            List<Zone> allDevices = new List<Zone>();
+            List<Device> allDevices = new List<Device>();
             //allDevices = dbContext.Zones.Where.ToList();
-           // return allDevices;
+            return allDevices;
         }
 
         public Zone getZoneByID(Guid id)
@@ -41,19 +42,34 @@ namespace IoT_Device_Management_API.Services.Implementations
 
         public List<Zone> GetZones()
         {
+            List<Zone> zones = dbContext.Zones.ToList();
             throw new NotImplementedException();
         }
 
         public void updateZone(Zone a)
         {
-            throw new NotImplementedException();
+            if (CheckZones(a.ZoneId))
+            {
+                Zone update = new Zone();
+                update.ZoneId = a.ZoneId;
+                update.ZoneName = a.ZoneName;
+                update.ZoneDescription = a.ZoneDescription;
+                update.DateCreated = a.DateCreated;
+                dbContext.Zones.Update(update);
+            }
+            else {
+                throw new KeyNotFoundException();
+            }
+            
         }
 
         private Boolean CheckZones(Guid id)
         {
             bool checker = false;
-            checker =
-            return
+            if (dbContext.Zones.FromSqlRaw("Select * from Zones where ZoneId='" + id + "'").Count() == 1) {
+                checker = true;
+            }
+            return checker;
         }
     }
 }
