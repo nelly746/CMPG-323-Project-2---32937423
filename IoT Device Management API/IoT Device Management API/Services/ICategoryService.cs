@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace IoT_Device_Management_API.Services
 {
-    interface ICategoryService
+    public interface ICategoryService
     {
         public List<Category> GetCategories();
         public Category GetCategoryByID(Guid id);
-        public void addDevice(Category a);
+        public void addCategory(Category a);
         public Boolean updateCategory(Category a);
         public void deleteCategory(Category a);
-        private Boolean checkCategory(Guid id);
 
         public List<Device> getDevices(Guid category_id);
 

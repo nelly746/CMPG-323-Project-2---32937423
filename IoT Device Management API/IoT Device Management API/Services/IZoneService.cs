@@ -8,7 +8,7 @@ using Zone = IoT_Device_Management_API.Models.Zone;
 
 namespace IoT_Device_Management_API.Services
 {
-    interface IZoneService
+    public interface IZoneService
     {
         public List<Zone> GetZones();
 
@@ -19,8 +19,6 @@ namespace IoT_Device_Management_API.Services
         public void updateZone(Zone a);
 
         public void deleteZone(Zone a);
-
-        
 
         public List<Device> getDevices(Guid zone_id); 
     }

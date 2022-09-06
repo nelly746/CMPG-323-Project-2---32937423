@@ -17,33 +17,37 @@ namespace IoT_Device_Management_API.Services.Implementations
         }
         public void createZone(Zone a)
         {
-            dbContext.Add(a);
-            dbContext.SaveChanges();
-            //throw new NotImplementedException();
+            dbContext.Zones.Add(a);
         }
 
         public void deleteZone(Zone a)
         {
-            dbContext.Zones.Remove(a);
-            //throw new NotImplementedException();
+            if (CheckZones(a.ZoneId))
+            {
+                dbContext.Zones.Remove(a);
+            }
+            else
+            {
+                throw new KeyNotFoundException();
+            }
         }
 
         public List<Device> getDevices(Guid zone_id)
         {
             List<Device> allDevices = new List<Device>();
-            //allDevices = dbContext.Zones.Where.ToList();
+            allDevices = dbContext.Devices.Where(a=> a.ZoneId == zone_id).ToList();
             return allDevices;
         }
 
         public Zone getZoneByID(Guid id)
         {
-            return dbContext.Zones.Find(id);
+            return dbContext.Zones.Where(a=>a.ZoneId == id).FirstOrDefault();
         }
 
         public List<Zone> GetZones()
         {
             List<Zone> zones = dbContext.Zones.ToList();
-            throw new NotImplementedException();
+            return zones;
         }
 
         public void updateZone(Zone a)

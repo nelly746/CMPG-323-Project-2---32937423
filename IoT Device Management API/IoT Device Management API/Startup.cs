@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,10 @@ namespace IoT_Device_Management_API
             services.AddDbContext<IoT_Device_Management_SystemContext>(a => a.UseSqlServer(Configuration.GetConnectionString("IoT_database_connection_string"),
                 b => b.CommandTimeout(100)
             ));
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(a=>
+               {
+                a.SwaggerDoc("v1", new OpenApiInfo { Title = "IoT Device Management API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,8 +45,10 @@ namespace IoT_Device_Management_API
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseSwaggerUI();
+            app.UseSwagger();
+            app.UseSwaggerUI(a=> {
+                a.SwaggerEndpoint("/swagger/v1/swagger.json", "IoT Device Management API");
+            });
 
             app.UseHttpsRedirection();
 

@@ -21,15 +21,17 @@ namespace IoT_Device_Management_API.Services.Implementations
             create.DeviceName = a.DeviceName;
             create.DateCreated = new DateTime();
             create.Status = a.Status;
+            create.IsActvie = false;
 
             dbContext.Devices.Add(a);
-            throw new NotImplementedException();
         }
 
         public void deleteDevice(Device a)
         {
-            dbContext.Devices.Remove(a);
-            throw new NotImplementedException();
+            if (checkDevice(a.DeviceId))
+            {
+                dbContext.Devices.Remove(a);
+            }
         }
 
         public Device GetDeviceByID(Guid id)
@@ -45,7 +47,28 @@ namespace IoT_Device_Management_API.Services.Implementations
 
         public bool updateDevice(Device a)
         {
-            throw new NotImplementedException();
+            if (checkDevice(a.DeviceId))
+            {
+                Device b = new Device();
+                b.DeviceId = a.DeviceId;
+                b.DeviceName = a.DeviceName;
+                b.CategoryId = a.CategoryId;
+                b.DateCreated = a.DateCreated;
+                b.IsActvie = a.IsActvie;
+                b.Status = a.Status;
+                b.ZoneId = a.ZoneId;
+                dbContext.Devices.Update(b);
+                return true;
+            }
+            return false;
+        }
+
+        private Boolean checkDevice(Guid id) {
+            bool checker = false;
+            if (dbContext.Devices.Where(a => a.DeviceId == id).Count() == 1) {
+                checker = true;
+            }
+            return true;
         }
     }
 }

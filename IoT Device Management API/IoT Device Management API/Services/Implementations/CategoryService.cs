@@ -13,43 +13,69 @@ namespace IoT_Device_Management_API.Services.Implementations
         {
             dbContext = a;
         }
-        public void addDevice(Category a)
+        public void addCategory(Category a)
         {
             dbContext.Categories.Add(a);
-            throw new NotImplementedException();
+ 
         }
 
         public void deleteCategory(Category a)
         {
-            throw new NotImplementedException();
+            if (checkCategory(a.CategoryId))
+            {
+                dbContext.Categories.Remove(a);
+            }
+            else {
+                throw new KeyNotFoundException();
+            }
         }
 
         public List<Category> GetCategories()
         {
             return dbContext.Categories.ToList();
-            throw new NotImplementedException();
+
         }
 
         public Category GetCategoryByID(Guid id)
         {
-            return dbContext.Categories.Where(a => a.CategoryId == id).First();
-            throw new NotImplementedException();
+            if (checkCategory(id))
+            {
+                return dbContext.Categories.Where(a => a.CategoryId == id).First();
+            }
+            return null;
         }
 
         public List<Device> getDevices(Guid category_id)
         {
-            //return dbContext.Categories.ToList();
-            throw new NotImplementedException();
+            return dbContext.Devices.Where(a=>a.CategoryId == category_id).ToList();
         }
 
         public int getZones(Guid category_id)
         {
-            throw new NotImplementedException();
+            return dbContext.Devices.Where(a=>a.CategoryId == category_id).Count();
         }
 
         public bool updateCategory(Category a)
         {
-            throw new NotImplementedException();
+            if (checkCategory(a.CategoryId))
+            {
+                Category newCat = new Category();
+                newCat.CategoryId = a.CategoryId;
+                newCat.CategoryName = a.CategoryName;
+                newCat.CategoryDescription = a.CategoryDescription;
+                newCat.DateCreated = a.DateCreated;
+                dbContext.Categories.Update(a);
+                return true;
+            }
+            return false;
+        }
+
+        private Boolean checkCategory(Guid id) {
+            bool checker = false;
+            if (dbContext.Categories.Where(a => a.CategoryId == id).Count() == 1) {
+                checker = true;
+            }
+            return checker;
         }
     }
 }
