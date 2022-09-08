@@ -21,5 +21,10 @@ commonly consist of different methods that allow for retrieval of data and manip
 As part of this project, i will be designing a CRUD RESTful API that will connect to a database storing
 IoT device data. This API will contain at least one get, post, patch and delete method per
 resource – linking to the project's requirements. Several endpoints in the RESTful API architecture can be accessed over HTTP to call application code as well as to update databases.
+reference Efundi Project 2
 
 ![image](https://user-images.githubusercontent.com/92325994/187527068-a07e837a-eff7-4008-bc01-d4ded1447b42.png)
+
+
+How Users will be requesting the api
+![image](https://user-images.githubusercontent.com/92325994/189150744-44c67929-5c35-4b95-9091-384fa7eba3be.png)
