@@ -2,14 +2,10 @@
 This project is a web API for IoT Device Management System
 
 Overview
-Smart devices such as voice controllers, security lights, smart locks and Wi-Fi-enabled devices
-can communicate and exchange data over the Internet. Devices form distributed ecosystems that
+Overview Wi-Fi-enabled devices, security lights, smart locks, and voice controls are all just a few examples of smart devices that can communicate and exchange data over the Internet. Devices form distributed ecosystems that
 can perform environmental monitoring of homes and buildings. The exposure of IoT device
-capabilities and data through the Web is fundamental. An IoT Device Management System helps
-you register, organise, monitor, and remotely manage IoT devices at scale as IoT deployments
-range in size, complexity, objectives and requirements.
-An IoT Device Management System keeps track of the whereabouts of all IoT devices deployed
-by the organisation. Depending on the type of organisation, different categories of devices are
+capabilities and data through the Web is fundamental. Since IoT deployments vary in size, complexity, aims, and requirements, an IoT Device Management System enables you to register, organize, monitor, and remotely manage IoT devices at scale.
+Each of the IoT devices that an organization has deployed are tracked by an IoT Device Management System. Depending on the type of organisation, different categories of devices are
 used. Each IoT device is initially categorised and registered. Then, IoT devices are deployed
 throughout the organisation's buildings in predefined zones. Administrators can view all IoT
 devices, update their properties, add new devices and move them to other zones.
@@ -22,9 +18,8 @@ connecting a RESTful API to a data source to manage interaction with the data so
 approach lends many advantages to a solution mostly addressing longevity. RESTful APIs
 commonly consist of different methods that allow for retrieval of data and manipulation of data
 (creation, amendment and deletion).
-As part of this project, you will create a CRUD RESTful API that will connect to a database storing
-IoT device data. The API should contain at least one get, post, patch and delete method per
-resource – aligning to the project's requirements. The RESTful API architecture has several
-endpoints called over HTTP, invoking application code to update a database
+As part of this project, i will be designing a CRUD RESTful API that will connect to a database storing
+IoT device data. This API will contain at least one get, post, patch and delete method per
+resource – linking to the project's requirements. Several endpoints in the RESTful API architecture can be accessed over HTTP to call application code as well as to update databases.
 
 ![image](https://user-images.githubusercontent.com/92325994/187527068-a07e837a-eff7-4008-bc01-d4ded1447b42.png)
